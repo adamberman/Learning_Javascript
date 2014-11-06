@@ -100,3 +100,88 @@ var subStrings = function(str) {
   }
   return result.uniq();
 };
+
+var range = function(start, end) {
+  var arr = [];
+  if(start > end){
+    return arr;
+  } else{
+    arr = [start];
+    var newArr = range((start + 1), end);
+    return arr.concat(newArr);
+  }
+};
+
+var rSum = function(arr){
+  var sum = 0;
+  if (arr.length === 0){
+    return sum;
+  } else {
+    sum = arr.shift(1);
+    return (sum + rSum(arr));
+  }
+};
+
+var iSum = function(arr){
+  var sum = 0;
+  var len = arr.length;
+  for(i = 0; i < len; i++){
+    sum += arr[i];
+  }
+  return sum;
+};
+
+var exp1 = function(num, exp){
+  var result = 1;
+  if (exp ===0){
+    return result;
+  } else{
+    var step = exp1(num, (exp-1));
+    return (num * step);
+  }
+};
+
+var exp2 = function(num, exp){
+  var result = 1;
+  if (exp ===0){
+    return result;
+  } else{
+    if (exp % 2 === 0){
+      var step = exp2(num, (exp / 2));
+      return step * step;
+    } else {
+      var step = exp2(num, ((exp - 1) / 2));
+      return num * step * step;
+    }
+  }
+};
+
+var fib = function(n) {
+  var arr = [];
+  if(n === 0) {
+    return arr;
+  } else if (n === 1){
+    return [0];
+  } else if (n === 2){
+    return [0, 1];
+  }
+  var step1 = fib(n - 1);
+  step1.push(step1[n - 2] + step1[n - 3]);
+  return step1;
+};
+
+var bsearch = function(arr, target){
+  var pivot = arr.length/2|0;
+  if (target === arr[pivot]){
+    return pivot;
+  } else if (target < arr[pivot]){
+    var sliced_array = arr.slice(0, pivot);
+    return bsearch(sliced_array, target);
+  } else {
+    var sliced_array = arr.slice(pivot);
+    return pivot + bsearch(sliced_array, target);
+  }
+  return nil;
+};
+
+
