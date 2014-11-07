@@ -54,7 +54,7 @@ Array.prototype.myEach = function(callback){
 Array.prototype.myMap = function(callback){
   var myAnswerArray = [];
   this.myEach(function (el) {
-   myAnswerArray.push(callback(el));
+    myAnswerArray.push(callback(el));
   });
   return myAnswerArray;
 };
@@ -227,4 +227,14 @@ var merge = function(half1, half2){
   return mergedArr.concat(half1).concat(half2);
 };
 
-
+var subsets = function(arr) {
+  if (arr.length === 0) {
+    return [[]];
+  } else {
+    var prevSubsets = subsets(arr.slice(0, (arr.length - 1)));
+    var secondHalf = prevSubsets.myMap(function (el) {
+      return el.concat(arr[(arr.length - 1)]);
+    });
+    return prevSubsets.concat(secondHalf);
+  }
+};
