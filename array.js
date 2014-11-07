@@ -184,4 +184,47 @@ var bsearch = function(arr, target){
   return nil;
 };
 
+var makeChange = function(value, coins){
+  if (value === 0){
+    return [];
+  } else if (coins[0] === 1){
+    return new Array(value).join(1).split("");
+  } else{
+    if (value < coins[0]){
+      return makeChange(value, coins.slice(1));
+    } else{
+      var case1 = makeChange(value, coins.slice(1));
+      var case2 = [coins[0]].concat(makeChange((value - coins[0]), coins));
+      if (case1.length > case2.length){
+        return case2;
+      } else{
+        return case1;
+      }
+    }
+  }
+};
+
+var mergeSort = function(arr) {
+  var middle = arr.length/2|0;
+  if(arr.length === 1){
+    return arr;
+  } else {
+    var half1 = mergeSort(arr.slice(0, middle));
+    var half2 = mergeSort(arr.slice((middle)));
+    return merge(half1, half2);
+  }
+};
+
+var merge = function(half1, half2){
+  var mergedArr = [];
+  while(half1.length !== 0 && half2.length !== 0) {
+    if (half1[0] > half2[0]){
+      mergedArr.push(half2.shift());
+    } else {
+      mergedArr.push(half1.shift());
+    }
+  }
+  return mergedArr.concat(half1).concat(half2);
+};
+
 
