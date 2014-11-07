@@ -8,8 +8,8 @@ function HanoiGame(){
   this.stacks = [[2, 1, 0], [], []];
 };
 HanoiGame.prototype.isWon = function(){
-  var winStack = [2, 1, 0];
-  if(this.stacks[1] === winStack || this.stacks[2] === winStack){
+  if(this.stacks[0].length == 0 && 
+      (this.stacks[1].length == 0 || this.stacks[2].length == 0)) {
     return true;
   } else{
     return false;
@@ -24,7 +24,7 @@ HanoiGame.prototype.isValidMove = function(start, end){
     return true;
   };
 };
-HanoiGame.prototype.move = function(start, end){
+HanoiGame.prototype.move = function(start, end){    
   if(this.isValidMove(start, end)) {
     this.stacks[end].push(this.stacks[start].pop());
     return true;
@@ -36,27 +36,29 @@ HanoiGame.prototype.print = function() {
   return JSON.stringify(this.stacks);
 };
 HanoiGame.prototype.promptMove = function(callback) {
-  console.log(this.stacks);
   console.log(this.print());
-  
+
   reader.question("Enter start tower", function (numString1) {
     reader.question("Enter end tower", function (numString2) {
       var start = parseInt(numString1);
       var end = parseInt(numString2);
-      
-      return callback(start, end);
+      callback(start, end);
     });
   });
 };
 HanoiGame.prototype.run = function(completionCallback) {
-  if(!this.promptMove(this.move.bind(this))){
-    console.log("Move failed");
-  }
-  if(this.isWon()){
-    completionCallback();
-  } else{
-    this.run(completionCallback.bind(this));
-  };
+  var that = this
+  this.promptMove(function (start, end) {
+    if(!that.move(start, end)){
+      console.log("Invalid Move");
+    }
+    
+    if(that.isWon()) {
+      completionCallback();
+    } else {
+      that.run(that.endGame.bind(that))
+    }
+  })
 };
 HanoiGame.prototype.endGame = function(){
   reader.close();
@@ -66,6 +68,7 @@ HanoiGame.prototype.endGame = function(){
 var game = new HanoiGame;
 
 game.run(game.endGame.bind(game));
+
 
 
 
