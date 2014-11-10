@@ -47,18 +47,35 @@ Function.prototype.curry = function(numArgs) {
   return _curry;
 }
 
-function meow(a, b, c) {
-  console.log(a, b, c);
-  return a + b + c;
-}
-
-var curriedMeow = meow.curry(3);
-
-var curriedMeow1 = curriedMeow(1)
-
-setTimeout(function () {
-  var curriedMeow2 = curriedMeow(2);
-  [1].forEach(curriedMeow2);
-}, 1000)
+// function meow(a, b, c) {
+//   console.log(a, b, c);
+//   return a + b + c;
+// }
+//
+// var curriedMeow = meow.curry(3);
+//
+// var curriedMeow1 = curriedMeow(1)
+//
+// setTimeout(function () {
+//   var curriedMeow2 = curriedMeow(2);
+//   [1].forEach(curriedMeow2);
+// }, 1000)
 
 //functionSum(3)(3)(4)
+
+Function.prototype.inherits = function(objParent){
+  var Surrogate = function(){};
+  Surrogate.prototype = objParent.prototype;
+  this.prototype = new Surrogate();
+}
+
+function MovingObject () {
+};
+MovingObject.prototype.moveObject = function(){
+    console.log("move the object");
+  }
+function Ship () {};
+Ship.inherits(MovingObject);
+
+function Asteroid () {};
+Asteroid.inherits(MovingObject);
