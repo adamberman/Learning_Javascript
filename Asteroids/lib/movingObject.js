@@ -1,5 +1,5 @@
 (function (){
-  if (typeof Asteroids == "undefined"){
+  if (typeof Asteroids === "undefined"){
     window.Asteroids = {};
   }
 
@@ -12,9 +12,7 @@
     this.color = options.color;
   }
 
-  MovingObject.prototype.draw = function(){
-    var canvas = document.getElementById('game');
-    var context = canvas.getContext('2d');
+  MovingObject.prototype.draw = function(context){
     var centerX = this.pos[0];
     var centerY = this.pos[1];
     var radius = this.radius;

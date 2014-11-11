@@ -1,19 +1,19 @@
 (function (){
-  if typeof(Asteroids.Util == "undefined"){
-    Asteroids.Util = {};
+  if (typeof Asteroids === "undefined"){
+    window.Asteroids = {};
   }
 
-  var Util = Asteroids.Util = function(){}
+  var Util = Asteroids.Util = {}
 
-  Function.prototype.inherits = function(objParent){
+  Util.inherits = function(objChild, objParent){
     var Surrogate = function(){};
     Surrogate.prototype = objParent.prototype;
-    this.prototype = new Surrogate();
+    objChild.prototype = new Surrogate();
   }
+  Util.randomVec = function() { return Math.floor(Math.random() * 5) + 1;}
 
   // Asteroids.Util.inherits = function (child, parent)
 
 
 
-
-});
+})();
