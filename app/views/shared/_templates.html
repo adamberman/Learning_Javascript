@@ -1,0 +1,37 @@
+<script type="text/template" id="pokemon-list-item-template">
+  <div class="list-item">
+    <li class="poke-list-item" data-id="<%%= pokemon.id %>">
+      <%% var shortInfo = ['name', 'poke_type']; %>
+      <%% for (var i = 0; i < shortInfo.length; i++) { %>
+        <%%= shortInfo[i] + ': ' + pokemon.get(shortInfo[i]) + '<br>' %>
+      <%% } %>
+    </li>
+  </div>
+</script>
+
+  <!-- var $li = $('<li class="poke-list-item">');
+  $li.data('id', pokemon.get('id'));
+
+  var shortInfo = ['name', 'poke_type'];
+  shortInfo.forEach(function (attr) {
+    $li.append(attr + ': ' + pokemon.get(attr) + '<br>');
+  });
+
+  this.$pokeList.append($li); -->
+
+<script type="text/template" id="pokemon-detail-template">
+  <div class="detail">
+    <%%= "<img src='" + pokemon.escape('image_url') + "'></img>" %>
+      <%% var attrs = ["name", "attack", "defense", "poke_type", "moves"]; %>
+      <%% for( var i = 0; i < attrs.length; i++) { %>
+      <%%= "<span style='font-weight:bold'>" + attrs[i] + ": " + pokemon.get(attrs[i]) + "</span>" %>
+      <%% } %>
+  </div>
+</script>
+
+<script type="text/template" id="toy-list-item-template">
+</script>
+
+<script type="text/template" id="toy-detail-template">
+</script>
+
