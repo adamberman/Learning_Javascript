@@ -5,7 +5,9 @@ JournalApp.Routers.Posts = Backbone.Router.extend({
   
   routes: {
     "": "postsIndex",
+    "posts/:id/edit": "postsForm",
     "posts/:id": "postsShow"
+    
   },
   
   postsIndex: function(){
@@ -18,6 +20,13 @@ JournalApp.Routers.Posts = Backbone.Router.extend({
   
   postsShow: function(id){
     var view = new JournalApp.Views.PostShow({
+      model: JournalApp.posts.getOrFetch(id)
+    });
+    this.$rootEl.html(view.render().$el);
+  },
+  
+  postsForm: function(id) {
+    var view = new JournalApp.Views.PostForm({
       model: JournalApp.posts.getOrFetch(id)
     });
     this.$rootEl.html(view.render().$el);

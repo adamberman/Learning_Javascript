@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       render json: @post
     else
-      render json: @post.errors.full_messages, status: 422
+      render json: { errors: @post.errors.full_messages }, status: 422
     end
   end
   
