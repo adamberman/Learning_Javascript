@@ -4,7 +4,8 @@ window.NewsReader = {
   Views: {},
   Routers: {},
   initialize: function() {
-    console.log('Hello from Backbone!');
+    var router = new NewsReader.Routers.Router({$rootEl: $('#content')});
+    Backbone.history.start();
   }
 };
 

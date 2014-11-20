@@ -3,3 +3,5 @@ NewsReader.Collections.Feeds = Backbone.Collection.extend({
   
   url: "/api/feeds"
 });
+
+NewsReader.feeds = new NewsReader.Collections.Feeds();
