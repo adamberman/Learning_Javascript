@@ -13,7 +13,7 @@ NewsReader.Routers.Router = Backbone.Router.extend({
     var view = new NewsReader.Views.FeedIndex({ 
       collection: NewsReader.feeds 
     });
-    this.$rootEl.html(view.render().$el);
+    this._swapView(view);
   },
   
   feedShow: function (id) {
@@ -22,6 +22,14 @@ NewsReader.Routers.Router = Backbone.Router.extend({
     var view = new NewsReader.Views.FeedShow({
       model: model
     });
-    this.$rootEl.html(view.render().$el);
+    this._swapView(view);
+  },
+  
+  _swapView: function(newView){
+    if(this.currentView){
+      this.currentView.remove();
+    }
+    this.$rootEl.html(newView.render().$el);
+    this.curentView = newView;
   }
 })
