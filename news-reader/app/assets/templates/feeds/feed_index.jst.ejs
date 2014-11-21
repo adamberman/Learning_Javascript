@@ -1,5 +1,7 @@
 <ul>
   <% collection.each(function(model){ %>
-    <li><%= model.escape('title') %></li>
+    <li>
+      <a href="#/feeds/<%= model.id %>"><%= model.escape('title') %></a>
+    </li>
   <% }); %>
 </ul>
