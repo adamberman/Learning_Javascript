@@ -1,6 +1,6 @@
 NewsReader.Views.FeedShow = Backbone.View.extend({
   initialize: function(options){
-    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model, 'remove sync', this.render);
   },
   
   events: {

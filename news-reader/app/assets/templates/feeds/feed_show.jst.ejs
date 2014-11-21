@@ -1,6 +1,6 @@
 <ul>
   <% model.entries().each(function (entry) { %>
-    <li><%= entry.escape('title') %></li>
+    <li><%= entry.escape('title') %><button data-id="<%= entry.id %>" class="delete">Delete</button></li>
   <% }) %>
 </ul>
 <button class="refresh">Refresh!</button>
