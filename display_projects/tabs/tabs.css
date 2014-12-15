@@ -1,0 +1,23 @@
+.active{
+  font-weight: bold;
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 500ms;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+.transitioning {
+  display: block;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 500ms;
+}
+
+

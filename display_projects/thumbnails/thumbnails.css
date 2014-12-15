@@ -1,0 +1,25 @@
+body {
+  height: 900px;
+}
+
+.thumbnails {
+  width: 400px;
+  margin-top: 50px;
+  margin-left: 300px;
+}
+
+div.active {
+  width: 100%;  
+}
+
+div.active img {
+  height: 400px;
+  width: 400px;
+}
+
+.gutter-images > div > img {
+  width: 19%;
+  display: block;
+  float: left;
+  padding: 2px;
+}
