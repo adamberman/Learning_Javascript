@@ -9,7 +9,7 @@ Pokedex.Router = Backbone.Router.extend({
       this.pokemonIndex(function(){
         this.pokemonDetail(id, callback);
       });
-      
+      return;
     }
   },
 
